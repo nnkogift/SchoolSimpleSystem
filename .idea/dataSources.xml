@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="Database" uuid="9da34a0b-1685-487f-a19b-b6ecfdf5eaad">
-      <driver-ref>derby.embedded</driver-ref>
+    <data-source source="LOCAL" name="Database" uuid="34bb658f-c0ab-40e2-9976-6b5100cce661">
+      <driver-ref>hsqldb.local</driver-ref>
       <synchronize>true</synchronize>
-      <jdbc-driver>org.apache.derby.jdbc.EmbeddedDriver</jdbc-driver>
-      <jdbc-url>jdbc:derby:$PROJECT_DIR$/../Student Record System/Database;create=true</jdbc-url>
+      <jdbc-driver>org.hsqldb.jdbc.JDBCDriver</jdbc-driver>
+      <jdbc-url>jdbc:hsqldb:file:$PROJECT_DIR$/Database/SchoolDB</jdbc-url>
     </data-source>
   </component>
 </project>
