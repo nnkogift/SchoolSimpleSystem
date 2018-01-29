@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Login.LoginMain">
+   <children>
+      <Pane prefHeight="300.0" prefWidth="200.0" style="-fx-background-color: #145fa9;" />
+      <JFXTextField fx:id="username" focusColor="#145fa9" labelFloat="true" layoutX="221.0" layoutY="135.0" prefHeight="30.0" prefWidth="266.0" promptText="Username">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXTextField>
+      <JFXButton fx:id="loginBtn" layoutX="382.0" layoutY="250.0" onAction="#getLoginAction" prefHeight="30.0" prefWidth="83.0" style="-fx-background-color: #145fa9;" text="Login">
+         <font>
+            <Font name="System Bold Italic" size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXComboBox fx:id="loginas" labelFloat="true" layoutX="221.0" layoutY="253.0" promptText="Login as" visibleRowCount="3">
+          <items>
+              <FXCollections fx:factory="observableArrayList">
+                  <String fx:value="Admin" />
+                  <String fx:value="Teacher" />
+                  <String fx:value="HeadMaster" />
+                  <String fx:value="Head of Dept"/>
+              </FXCollections>
+          </items>
+      </JFXComboBox>
+      <JFXPasswordField fx:id="password" labelFloat="true" layoutX="221.0" layoutY="194.0" prefHeight="30.0" prefWidth="266.0" promptText="Password">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXPasswordField>
+   </children>
+</AnchorPane>

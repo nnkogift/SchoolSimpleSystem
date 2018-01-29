@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="Database">
+  <database-model serializer="dbm" rdbms="HSQLDB" format-version="4.7">
+    <root id="1"/>
+    <database id="2" parent="1" name="PUBLIC">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </database>
+    <schema id="3" parent="2" name="INFORMATION_SCHEMA"/>
+    <schema id="4" parent="2" name="PUBLIC">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="5" parent="2" name="SYSTEM_LOBS"/>
+    <table id="6" parent="4" name="PREVILEDGES"/>
+    <table id="7" parent="4" name="SCHOOLINFO"/>
+    <table id="8" parent="4" name="USERS"/>
+    <column id="9" parent="6" name="PREVILEDGEID">
+      <Position>1</Position>
+      <DataType>INTEGER(32)|4</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="10" parent="6" name="LOGINAS">
+      <Position>2</Position>
+      <DataType>VARCHAR(10)|12</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="11" parent="6" name="PREVILEDGES_LOGINAS_UINDEX">
+      <ColNames>LOGINAS</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="12" parent="6" name="SYS_PK_10096">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>PREVILEDGEID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="13" parent="7" name="SCHOOLREGNO">
+      <Position>1</Position>
+      <DataType>VARCHAR(10)|12</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="14" parent="7" name="SCHOOLNAME">
+      <Position>2</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <column id="15" parent="7" name="Region ">
+      <Position>3</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <column id="16" parent="7" name="DISTRICT">
+      <Position>4</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <column id="17" parent="7" name="WARD">
+      <Position>5</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <index id="18" parent="7" name="SCHOOLINFO_SCHOOLNAME_UINDEX">
+      <ColNames>SCHOOLNAME</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="19" parent="7" name="SYS_PK_10103">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>SCHOOLREGNO</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="20" parent="8" name="USERID">
+      <Position>1</Position>
+      <DataType>INTEGER(32)|4</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="21" parent="8" name="USERNAME">
+      <Position>2</Position>
+      <DataType>VARCHAR(10)|12</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="22" parent="8" name="PREVILEDGEID">
+      <Position>3</Position>
+      <DataType>INTEGER(32)|4</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="23" parent="8" name="PASSWORD">
+      <Position>4</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="24" parent="8" name="USERS_USERNAME_UINDEX">
+      <ColNames>USERNAME</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="25" parent="8" name="USERS_PASSWORD_UINDEX">
+      <ColNames>PASSWORD</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="26" parent="8" name="SYS_PK_10092">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>USERID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="27" parent="8" name="USERS_PREVILEDGES_PREVILEDGEID_FK">
+      <ColNames>PREVILEDGEID</ColNames>
+      <RefSchemaName>PUBLIC</RefSchemaName>
+      <RefTableName>PREVILEDGES</RefTableName>
+      <RefKeyName>SYS_PK_10096</RefKeyName>
+      <RefColNames>PREVILEDGEID</RefColNames>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+    </foreign-key>
+  </database-model>
+</dataSource>
