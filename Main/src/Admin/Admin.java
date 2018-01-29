@@ -5,7 +5,6 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.Event;
-import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -14,7 +13,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -41,6 +39,8 @@ public class Admin {
     @FXML
     private JFXDatePicker dateOfBirth, dateofBirthP;
 
+    public String school = "Kibaha";
+
 
     @FXML
     private void logout(){
@@ -65,7 +65,7 @@ public class Admin {
            showSchoolInfo();
        }
        catch (Throwable t){
-           System.out.println(t.getLocalizedMessage());
+           System.out.println(t.fillInStackTrace());
        }
     }
     @FXML
@@ -95,28 +95,35 @@ public class Admin {
     @FXML
     private void showSchoolInfo()throws SQLException{
         // this shows the school information using the assigned labels
-        String query = "select * from SCHOOLINFO where SCHOOLNAME like \'Kibaha\';";
-        ResultSet rset = connectAndAcessDB(query);
-
+        String query = "SELECT * FROM SCHOOLINFO;";
+        System.out.println(query);
+        ResultSet rset = connectAndAccessDB(query);
+        String regno = "", regions="", districts="",wards="";
         if(rset.next()){
-            schoolName.setText(rset.getString("schoolname") + " Secondary School");
-            regNo.setText(rset.getString("schoolregno"));
-            region.setText(rset.getString("region"));
-            district.setText(rset.getString("district"));
-            ward.setText(rset.getString("ward"));
+            school = rset.getString("SCHOOLNAME");
+            regno = rset.getString("SCHOOLREGNO");
+            regions = rset.getString("Region ");
+            districts = rset.getString("DISTRICT");
+            wards = rset.getString("WARD");
+
         }
+        System.out.println(school + regno + regions + districts + wards);
+        schoolName = new Label(school);
+//        regNo.setText(regno);
+//        region.setText(regions);
+//        district.setText(districts);
+//        ward.setText(wards);
+
 
     }
-    private ResultSet connectAndAcessDB( String query) throws SQLException{
+    private ResultSet connectAndAccessDB(String query) throws SQLException{
         DatabaseConnect connect = new DatabaseConnect();
-
         Connection connection = connect.connectDb();
-
+        if(connection == null)
         connection.createStatement().executeUpdate("SET DATABASE SQL SYNTAX MYS TRUE");
         PreparedStatement preparedStatement = connection.prepareStatement(query);
         preparedStatement.clearParameters();
-        ResultSet resultSet = preparedStatement.executeQuery();
-        return resultSet;
+        return  preparedStatement.executeQuery();
     }
 
 

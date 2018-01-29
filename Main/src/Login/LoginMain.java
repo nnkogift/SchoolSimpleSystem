@@ -111,6 +111,7 @@ public class LoginMain {
                 DatabaseConnect connect = new DatabaseConnect();
 
                 Connection connection = connect.connectDb();
+                //set the syntax for MySQL database
 
                 connection.createStatement().executeUpdate("SET DATABASE SQL SYNTAX MYS TRUE");
                 //System.out.println("SELECT USERNAME,PASSWORD,PREVILEDGEID FROM PUBLIC.USERS WHERE USERNAME=\'" + usernameS + "\';");
@@ -137,6 +138,12 @@ public class LoginMain {
                      else {
                         isithim = true;
                     }
+//                    query = "SHUTDOWN;";
+//                     PreparedStatement shutdown = connection.prepareStatement(query);
+//                     shutdown.clearParameters();
+//                     shutdown.executeQuery();
+//
+//                     connection.close();
                 }
             } catch (Throwable e) {
                 System.out.println("Error ni:" + e.getLocalizedMessage());

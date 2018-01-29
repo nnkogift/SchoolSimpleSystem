@@ -37,7 +37,7 @@
             </JFXButton>
          </children>
       </Pane>
-      <Label fx:id="schoolName" layoutX="464.0" layoutY="142.0" prefHeight="17.0" prefWidth="438.0" text="School Secondary School" textAlignment="CENTER">
+      <Label fx:id="schoolName" layoutX="464.0" layoutY="142.0" prefHeight="17.0" prefWidth="438.0" text="Kibaha Secondary School" textAlignment="CENTER">
          <font>
             <Font name="Amble Light Condensed" size="41.0" />
          </font>
@@ -47,7 +47,7 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <Label fx:id="regNo" layoutX="499.0" layoutY="227.0" prefHeight="28.0" prefWidth="101.0" text="Number">
+      <Label fx:id="regNo" layoutX="499.0" layoutY="227.0" prefHeight="28.0" prefWidth="101.0" text="S0119">
          <font>
             <Font name="System Italic" size="19.0" />
          </font>
@@ -57,17 +57,17 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <Label fx:id="region" layoutX="405.0" layoutY="269.0" prefHeight="28.0" prefWidth="101.0" text="Region">
+      <Label fx:id="region" layoutX="405.0" layoutY="269.0" prefHeight="28.0" prefWidth="101.0" text="Pwani">
          <font>
             <Font name="System Italic" size="19.0" />
          </font>
       </Label>
-      <Label fx:id="ward" layoutX="405.0" layoutY="350.0" prefHeight="28.0" prefWidth="101.0" text="Number">
+      <Label fx:id="ward" layoutX="405.0" layoutY="350.0" prefHeight="28.0" prefWidth="101.0" text="Kibaha">
          <font>
             <Font name="System Italic" size="19.0" />
          </font>
       </Label>
-      <Label fx:id="district" layoutX="405.0" layoutY="308.0" prefHeight="28.0" prefWidth="101.0" text="Number">
+      <Label fx:id="district" layoutX="405.0" layoutY="308.0" prefHeight="28.0" prefWidth="101.0" text="KIbaha">
          <font>
             <Font name="System Italic" size="19.0" />
          </font>
@@ -82,5 +82,10 @@
             <Font size="16.0" />
          </font>
       </Label>
+      <JFXButton fx:id="logoutBtn" buttonType="RAISED" layoutX="933.0" layoutY="625.0" onAction="#logout" prefHeight="39.0" prefWidth="88.0" style="-fx-background-color: #145fa9;" text="Logout">
+         <font>
+            <Font name="System Bold Italic" size="16.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>
