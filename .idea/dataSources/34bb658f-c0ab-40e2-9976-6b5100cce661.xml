@@ -14,92 +14,160 @@
     <schema id="5" parent="2" name="SYSTEM_LOBS"/>
     <table id="6" parent="4" name="PREVILEDGES"/>
     <table id="7" parent="4" name="SCHOOLINFO"/>
-    <table id="8" parent="4" name="USERS"/>
-    <column id="9" parent="6" name="PREVILEDGEID">
+    <table id="8" parent="4" name="STUDENTS"/>
+    <table id="9" parent="4" name="TEACHERS"/>
+    <table id="10" parent="4" name="USERS"/>
+    <column id="11" parent="6" name="PREVILEDGEID">
       <Position>1</Position>
       <DataType>INTEGER(32)|4</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="10" parent="6" name="LOGINAS">
+    <column id="12" parent="6" name="LOGINAS">
       <Position>2</Position>
       <DataType>VARCHAR(10)|12</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="11" parent="6" name="PREVILEDGES_LOGINAS_UINDEX">
+    <index id="13" parent="6" name="PREVILEDGES_LOGINAS_UINDEX">
       <ColNames>LOGINAS</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="12" parent="6" name="SYS_PK_10096">
+    <key id="14" parent="6" name="SYS_PK_10096">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>PREVILEDGEID</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="13" parent="7" name="SCHOOLREGNO">
+    <column id="15" parent="7" name="SCHOOLREGNO">
       <Position>1</Position>
       <DataType>VARCHAR(10)|12</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="14" parent="7" name="SCHOOLNAME">
+    <column id="16" parent="7" name="SCHOOLNAME">
       <Position>2</Position>
       <DataType>VARCHAR(20)|12</DataType>
     </column>
-    <column id="15" parent="7" name="Region ">
+    <column id="17" parent="7" name="Region ">
       <Position>3</Position>
       <DataType>VARCHAR(20)|12</DataType>
     </column>
-    <column id="16" parent="7" name="DISTRICT">
+    <column id="18" parent="7" name="DISTRICT">
       <Position>4</Position>
       <DataType>VARCHAR(20)|12</DataType>
     </column>
-    <column id="17" parent="7" name="WARD">
+    <column id="19" parent="7" name="WARD">
       <Position>5</Position>
       <DataType>VARCHAR(20)|12</DataType>
     </column>
-    <index id="18" parent="7" name="SCHOOLINFO_SCHOOLNAME_UINDEX">
+    <index id="20" parent="7" name="SCHOOLINFO_SCHOOLNAME_UINDEX">
       <ColNames>SCHOOLNAME</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="19" parent="7" name="SYS_PK_10103">
+    <key id="21" parent="7" name="SYS_PK_10099">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>SCHOOLREGNO</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="20" parent="8" name="USERID">
+    <column id="22" parent="8" name="STUDENTID">
+      <Position>1</Position>
+      <DataType>INTEGER(32)|4</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="23" parent="8" name="FIRSTNAME">
+      <Position>2</Position>
+      <DataType>VARCHAR(10)|12</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="24" parent="8" name="SURNAME">
+      <Position>3</Position>
+      <DataType>VARCHAR(10)|12</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="25" parent="8" name="OTHERNAME">
+      <Position>4</Position>
+      <DataType>VARCHAR(10)|12</DataType>
+    </column>
+    <column id="26" parent="8" name="SEX">
+      <Position>5</Position>
+      <DataType>VARCHAR(1)|12</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="27" parent="8" name="ADDRESS">
+      <Position>6</Position>
+      <DataType>VARCHAR(10)|12</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="28" parent="8" name="SYS_PK_10105">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>STUDENTID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="29" parent="9" name="TEACHERID">
+      <Position>1</Position>
+      <DataType>INTEGER(32)|4</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="30" parent="9" name="FIRSTNAME">
+      <Position>2</Position>
+      <DataType>VARCHAR(10)|12</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="31" parent="9" name="SURNAME">
+      <Position>3</Position>
+      <DataType>VARCHAR(10)|12</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="32" parent="9" name="OTHERNAME">
+      <Position>4</Position>
+      <DataType>INTEGER(32)|4</DataType>
+    </column>
+    <column id="33" parent="9" name="SEX">
+      <Position>5</Position>
+      <DataType>VARCHAR(1)|12</DataType>
+    </column>
+    <column id="34" parent="9" name="ADDRESS">
+      <Position>6</Position>
+      <DataType>VARCHAR(10)|12</DataType>
+    </column>
+    <key id="35" parent="9" name="SYS_PK_10142">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>TEACHERID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="36" parent="10" name="USERID">
       <Position>1</Position>
       <DataType>INTEGER(32)|4</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="21" parent="8" name="USERNAME">
+    <column id="37" parent="10" name="USERNAME">
       <Position>2</Position>
       <DataType>VARCHAR(10)|12</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="22" parent="8" name="PREVILEDGEID">
+    <column id="38" parent="10" name="PREVILEDGEID">
       <Position>3</Position>
       <DataType>INTEGER(32)|4</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="23" parent="8" name="PASSWORD">
+    <column id="39" parent="10" name="PASSWORD">
       <Position>4</Position>
       <DataType>VARCHAR(20)|12</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="24" parent="8" name="USERS_USERNAME_UINDEX">
+    <index id="40" parent="10" name="USERS_USERNAME_UINDEX">
       <ColNames>USERNAME</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="25" parent="8" name="USERS_PASSWORD_UINDEX">
+    <index id="41" parent="10" name="USERS_PASSWORD_UINDEX">
       <ColNames>PASSWORD</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="26" parent="8" name="SYS_PK_10092">
+    <key id="42" parent="10" name="SYS_PK_10092">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>USERID</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="27" parent="8" name="USERS_PREVILEDGES_PREVILEDGEID_FK">
+    <foreign-key id="43" parent="10" name="USERS_PREVILEDGES_PREVILEDGEID_FK">
       <ColNames>PREVILEDGEID</ColNames>
       <RefSchemaName>PUBLIC</RefSchemaName>
       <RefTableName>PREVILEDGES</RefTableName>

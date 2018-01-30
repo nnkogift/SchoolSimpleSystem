@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.*;
 
+
 public class LoginMain {
     //this class is going to access the User table and log in the users
     @FXML
@@ -29,14 +30,22 @@ public class LoginMain {
     private int previledgeID;
     @FXML
     private void getLoginAction(Event event)throws IOException {
-        String usernameS;
-        String passwordS;
-        String loginasS;
-
-        usernameS = username.getText();
-        passwordS = password.getText();
-        loginasS = loginas.getSelectionModel().getSelectedItem();
-        //setting the previlege from the comboBox  ooh okay no need...
+        String usernameS = null;
+        String passwordS = null;
+        String loginasS = null;
+        try {
+            usernameS = username.getText();
+            passwordS = password.getText();
+            loginasS = loginas.getSelectionModel().getSelectedItem();
+            //setting the previlege from the comboBox  ooh okay no need...
+        }
+        catch (Exception e){
+            System.out.println("Bad Credentials");
+            System.exit(0);
+        }
+        if(loginasS == null){
+            System.out.println("Please choose your privilege");
+        }
 
         switch (loginasS) {
             case "Admin": {
@@ -100,6 +109,10 @@ public class LoginMain {
                 }
                 break;
             }
+            default:{
+               ErrorCall errorCall = new ErrorCall();
+               System.exit(0);
+            }
 
         }
     }
@@ -122,6 +135,11 @@ public class LoginMain {
                 resultSet = preparedStatement.executeQuery();
                 usernameS = usernameS.trim();
                 passwordS = passwordS.trim();
+
+                if(usernameS == null || passwordS == null){
+                    System.out.println("Bad credentials");
+                    System.exit(0);
+                }
 
                 if (resultSet.next()) {
                     System.out.println(resultSet.getString("USERNAME"));
