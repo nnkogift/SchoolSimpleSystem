@@ -1,6 +1,7 @@
 package Admin;
 
 import Database.DatabaseConnect;
+import Login.LoginMain;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
@@ -13,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -38,13 +40,21 @@ public class Admin {
     private Label ward;
     @FXML
     private JFXDatePicker dateOfBirth, dateofBirthP;
+    @FXML
+    private JFXButton students;
+    @FXML
+    private JFXButton teachers;
+    @FXML
+    private JFXButton department;
+    @FXML
+    private JFXButton schoolInfo;
 
     public String school = "Kibaha";
 
 
     @FXML
-    private void logout(){
-        logoutBtn.setOnAction(e -> {
+    public void logout(Event e){
+//        logoutBtn.setOnAction(e -> {
             try {
                 Parent teacherParent = FXMLLoader.load(getClass().getResource("/Login/LoginF.fxml"));
                 Scene mainScene = new Scene(teacherParent);
@@ -57,20 +67,16 @@ public class Admin {
             catch (Throwable f){
                 System.out.println("This is really annoying");
             }
-        });
+     //   });
     }
 
     public Admin(){
-       try {
-           showSchoolInfo();
-       }
-       catch (Throwable t){
-           System.out.println(t.fillInStackTrace());
-       }
+
     }
     @FXML
-    public void showStudentInfo(Event e){
+    public void showStudentInfo(Event e) throws IOException{
         //this opens a new stage where the student information is shown
+
     }
     @FXML
     public void showTeacherInfo(Event e){
@@ -78,11 +84,19 @@ public class Admin {
     }
     @FXML
     public void showStudents(Event e){
+        try{
+            changeScene("Students Information", "Students_Profile.fxml", e);
+
+        }catch (Exception exp){
+            System.out.println("The methods change scene or viewStudent have a problem error: " + exp.getLocalizedMessage());
+        }
 
     }
     @FXML
-    public void showTeachers(Event e){
+    public void showTeachers(Event e)throws IOException{
         //this shows the list of all registered teachers
+        changeScene("Teachers Information", "Teachers_profile.fxml", e);
+
     }
     @FXML
     public void addTeacher(Event e){
@@ -93,41 +107,17 @@ public class Admin {
         //allows the addition of new student
     }
     @FXML
-    private void showSchoolInfo()throws SQLException{
-        // this shows the school information using the assigned labels
-        String query = "SELECT * FROM SCHOOLINFO;";
-        System.out.println(query);
-        ResultSet rset = connectAndAccessDB(query);
-        String regno = "", regions="", districts="",wards="";
-        if(rset.next()){
-            school = rset.getString("SCHOOLNAME");
-            regno = rset.getString("SCHOOLREGNO");
-            regions = rset.getString("Region ");
-            districts = rset.getString("DISTRICT");
-            wards = rset.getString("WARD");
-
-        }
-        System.out.println(school + regno + regions + districts + wards);
-        schoolName = new Label(school);
-//        regNo.setText(regno);
-//        region.setText(regions);
-//        district.setText(districts);
-//        ward.setText(wards);
-
-
+    public  void showSchoolInfo(Event e)throws IOException {
+        changeScene("Administrator", "Admin.fxml", e);
     }
-    private ResultSet connectAndAccessDB(String query) throws SQLException{
-        DatabaseConnect connect = new DatabaseConnect();
-        Connection connection = connect.connectDb();
-        if(connection == null)
-        connection.createStatement().executeUpdate("SET DATABASE SQL SYNTAX MYS TRUE");
-        PreparedStatement preparedStatement = connection.prepareStatement(query);
-        preparedStatement.clearParameters();
-        return  preparedStatement.executeQuery();
+    private  void changeScene(String nameOfScene, String fxmllocation, Event e) throws IOException{
+        Parent studentinfoStage = FXMLLoader.load(getClass().getResource(fxmllocation));
+        LoginMain.adminScene = new Scene(studentinfoStage);
+        Stage adminStage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        adminStage.hide();
+        adminStage.setScene(LoginMain.adminScene);
+        adminStage.setTitle(nameOfScene);
+        adminStage.show();
     }
-
-
-
-
 
 }

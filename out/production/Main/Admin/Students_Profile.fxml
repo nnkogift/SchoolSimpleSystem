@@ -2,6 +2,8 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -9,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="1080.0" style="-fx-background-color: #d7e9fb;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Admin.Admin">
+<AnchorPane prefHeight="500.0" prefWidth="1080.0" style="-fx-background-color: #d7e9fb;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Admin.StudentsController">
    <children>
       <Label layoutX="430.0" layoutY="66.0" prefHeight="39.0" prefWidth="506.0" text="School  Information Management  System" textAlignment="CENTER" textFill="#145fa9" wrapText="true">
          <font>
@@ -18,7 +20,7 @@
       </Label>
       <Pane prefHeight="700.0" prefWidth="256.0" style="-fx-background-color: #145fa9;">
          <children>
-            <JFXButton buttonType="RAISED" layoutX="7.0" layoutY="136.0" prefHeight="50.0" prefWidth="256.0" text="School Information" textAlignment="RIGHT">
+            <JFXButton layoutX="7.0" layoutY="136.0" onAction="#showSchoolInfo" prefHeight="50.0" prefWidth="256.0" text="School Information" textAlignment="LEFT">
                <font>
                   <Font name="System Bold Italic" size="15.0" />
                </font>
@@ -33,7 +35,7 @@
                   <Font name="System Bold Italic" size="15.0" />
                </font>
             </JFXButton>
-            <JFXButton layoutX="7.0" layoutY="286.0" prefHeight="50.0" prefWidth="256.0" style="-fx-background-color: #d7e9fb;" text="Students">
+            <JFXButton layoutX="7.0" layoutY="286.0" onAction="#viewStudents" prefHeight="50.0" prefWidth="256.0" style="-fx-background-color: #d7e9fb;" text="Students">
                <font>
                   <Font name="System Bold Italic" size="15.0" />
                </font>
@@ -60,19 +62,29 @@
             <Font name="System Bold Italic" size="16.0" />
          </font>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="785.0" layoutY="625.0" prefHeight="39.0" prefWidth="120.0" style="-fx-background-color: #00a954;" text="Add New Student">
+      <JFXButton fx:id="addNewStudentBtn" buttonType="RAISED" layoutX="785.0" layoutY="625.0" onAction="#addStudent" prefHeight="39.0" prefWidth="120.0" style="-fx-background-color: #00a954;" text="Add New Student">
          <font>
             <Font name="Arial Rounded MT Bold" size="12.0" />
          </font>
       </JFXButton>
-      <JFXComboBox labelFloat="true" layoutX="287.0" layoutY="187.0" prefHeight="25.0" prefWidth="88.0" promptText="Class" />
-      <TableView layoutX="466.0" layoutY="187.0" prefHeight="419.0" prefWidth="595.0">
+      <JFXComboBox fx:id="classSelection" labelFloat="true" layoutX="287.0" layoutY="187.0" onAction="#showSelectedClass" prefHeight="25.0" prefWidth="88.0" promptText="Class">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:value="Form 1" />
+               <String fx:value="Form 2" />
+               <String fx:value="Form 3" />
+               <String fx:value="Form 4" />
+            </FXCollections>
+         </items>
+              </JFXComboBox>
+      <TableView fx:id="studentTable" layoutX="409.0" layoutY="187.0" prefHeight="419.0" prefWidth="652.0">
         <columns>
-          <TableColumn prefWidth="91.0" text="Student ID" />
-          <TableColumn prefWidth="190.0" text="Student Name" />
-            <TableColumn text="Sex" />
-            <TableColumn prefWidth="118.0" text="Address" />
-            <TableColumn prefWidth="116.0" text="Date of Birth" />
+          <TableColumn fx:id="idColumn" prefWidth="56.0" text="ID" />
+          <TableColumn fx:id="firstNameColumn" prefWidth="142.0" text="First Name" />
+            <TableColumn fx:id="surnameColumn" prefWidth="134.0" text="Surname" />
+            <TableColumn fx:id="otherNameColumn" prefWidth="135.0" text="Other" />
+            <TableColumn fx:id="sexColumn" prefWidth="54.0" text="Sex" />
+            <TableColumn fx:id="addressColumn" prefWidth="149.0" text="Address" />
         </columns>
       </TableView>
    </children>

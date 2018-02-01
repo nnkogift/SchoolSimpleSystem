@@ -18,6 +18,7 @@ import java.sql.*;
 
 public class LoginMain {
     //this class is going to access the User table and log in the users
+   public static Scene adminScene;
     @FXML
     private JFXTextField username;
     @FXML
@@ -45,6 +46,7 @@ public class LoginMain {
         }
         if(loginasS == null){
             System.out.println("Please choose your privilege");
+            System.exit(0);
         }
 
         switch (loginasS) {
@@ -57,7 +59,7 @@ public class LoginMain {
                 previledgeID = 1;
                 if (validation(usernameS, passwordS)) {
                     Parent adminParent = FXMLLoader.load(getClass().getResource("/Admin/Admin.fxml"));
-                    Scene adminScene = new Scene(adminParent);
+                    adminScene = new Scene(adminParent);
                     Stage adminStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     adminStage.hide();
                     adminStage.setScene(adminScene);

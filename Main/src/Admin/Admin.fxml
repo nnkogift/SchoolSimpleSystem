@@ -15,22 +15,22 @@
       </Label>
       <Pane prefHeight="700.0" prefWidth="256.0" style="-fx-background-color: #145fa9;">
          <children>
-            <JFXButton buttonType="RAISED" layoutX="78.0" layoutY="136.0" prefHeight="50.0" prefWidth="192.0" text="School Information" textAlignment="RIGHT">
+            <JFXButton buttonType="RAISED" layoutX="14.0" layoutY="136.0" onAction="#showSchoolInfo" prefHeight="50.0" prefWidth="243.0" text="School Information" textAlignment="RIGHT">
                <font>
                   <Font name="System Bold Italic" size="15.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" layoutX="57.0" layoutY="186.0" prefHeight="50.0" prefWidth="192.0" text="Departments">
+            <JFXButton buttonType="RAISED" layoutX="14.0" layoutY="186.0" prefHeight="50.0" prefWidth="243.0" text="Departments">
                <font>
                   <Font name="System Bold Italic" size="15.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" layoutX="39.0" layoutY="236.0" prefHeight="50.0" prefWidth="192.0" text="Teachers">
+            <JFXButton buttonType="RAISED" layoutX="12.0" layoutY="236.0" onAction="#showTeachers" prefHeight="50.0" prefWidth="243.0" text="Teachers">
                <font>
                   <Font name="System Bold Italic" size="15.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" layoutX="39.0" layoutY="286.0" prefHeight="50.0" prefWidth="192.0" text="Students">
+            <JFXButton buttonType="RAISED" layoutX="13.0" layoutY="286.0" onAction="#showStudents" prefHeight="50.0" prefWidth="243.0" text="Students">
                <font>
                   <Font name="System Bold Italic" size="15.0" />
                </font>
