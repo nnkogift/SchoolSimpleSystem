@@ -25,17 +25,17 @@
                   <Font name="System Bold Italic" size="15.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" layoutX="6.0" layoutY="186.0" prefHeight="50.0" prefWidth="256.0" text="Departments">
+            <JFXButton buttonType="RAISED" layoutX="6.0" layoutY="186.0" onAction="#showDeptsInfo" prefHeight="50.0" prefWidth="256.0" text="Departments">
                <font>
                   <Font name="System Bold Italic" size="15.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" layoutX="7.0" layoutY="236.0" prefHeight="50.0" prefWidth="256.0" text="Teachers">
+            <JFXButton buttonType="RAISED" layoutX="7.0" layoutY="236.0" onAction="#showTeachersInfo" prefHeight="50.0" prefWidth="256.0" text="Teachers">
                <font>
                   <Font name="System Bold Italic" size="15.0" />
                </font>
             </JFXButton>
-            <JFXButton layoutX="7.0" layoutY="286.0" onAction="#viewStudents" prefHeight="50.0" prefWidth="256.0" style="-fx-background-color: #d7e9fb;" text="Students">
+            <JFXButton layoutX="7.0" layoutY="286.0" prefHeight="50.0" prefWidth="256.0" style="-fx-background-color: #d7e9fb;" text="Students">
                <font>
                   <Font name="System Bold Italic" size="15.0" />
                </font>
@@ -87,5 +87,10 @@
             <TableColumn fx:id="addressColumn" prefWidth="149.0" text="Address" />
         </columns>
       </TableView>
+      <JFXButton buttonType="RAISED" layoutX="636.0" layoutY="625.0" onAction="#setDeleteStudent" prefHeight="39.0" prefWidth="120.0" style="-fx-background-color: #FF0000;" text="Delete Student">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="12.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>

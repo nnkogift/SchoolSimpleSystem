@@ -1,11 +1,10 @@
-package Admin;
+package HeadMaster;
 
 import Database.DatabaseConnect;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
@@ -13,13 +12,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-import javax.swing.*;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -60,27 +57,6 @@ public class StudentsController {
    private Admin school= new Admin();
 
     public void showStudentInfo(){
-
-    }
-    @FXML
-    public void addStudent(Event e){
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("StudentAdd.fxml"));
-            Scene addScene = new Scene(root, 600,400);
-            addStage = new Stage();
-            addStage.setScene(addScene);
-            addStage.setAlwaysOnTop(true);
-            addStage.showAndWait();
-            //closing it when done
-            if(StudentAdd.success != 0){
-                viewStudents();
-            }
-
-        }
-        catch (Exception exp){
-            System.out.println("Houston we have a problem!  " + exp.getLocalizedMessage());
-
-        }
 
     }
     public static class Person {

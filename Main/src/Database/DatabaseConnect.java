@@ -52,6 +52,20 @@ public class DatabaseConnect {
         }
         return rowCount;
     }
+    public static int deleteRow(String query){
+        int rowCount = 0;
+        try {
+            conn = connectDb();
+            conn.createStatement().executeUpdate("SET DATABASE SQL SYNTAX MYS TRUE ");
+            PreparedStatement preparedStatement = conn.prepareStatement(query);
+            preparedStatement.clearParameters();
+           rowCount = preparedStatement.executeUpdate();
+        }
+        catch (SQLException exp){
+            System.out.println(exp.getLocalizedMessage());
+        }
+        return rowCount;
+    }
 }
 
 

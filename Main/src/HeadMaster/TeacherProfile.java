@@ -1,11 +1,10 @@
-package Admin;
+package HeadMaster;
 
 import Database.DatabaseConnect;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
@@ -13,26 +12,24 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-import javax.swing.*;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
-public class StudentsController {
+public class TeacherProfile {
 
     @FXML
     private JFXButton NextBtn;
     @FXML
     private JFXTextField AdminNoTxt;
     @FXML
-    private TableView<Person> studentTable;
+    private TableView<Person> teacherTable;
     @FXML
     private TableColumn idColumn;
     @FXML
@@ -50,37 +47,16 @@ public class StudentsController {
     @FXML
     private JFXButton logoutBtn;
     @FXML
-    private JFXButton addNewStudentBtn;
+    private JFXButton addNewteacherBtn;
     @FXML
-    private JFXButton viewStudents;
+    private JFXButton viewTeachers;
 
     public static Stage addStage;
-    public static int classID = 1;
+    public static int deptID = 1;
 
-   private Admin school= new Admin();
+    private Admin school= new Admin();
 
-    public void showStudentInfo(){
-
-    }
-    @FXML
-    public void addStudent(Event e){
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("StudentAdd.fxml"));
-            Scene addScene = new Scene(root, 600,400);
-            addStage = new Stage();
-            addStage.setScene(addScene);
-            addStage.setAlwaysOnTop(true);
-            addStage.showAndWait();
-            //closing it when done
-            if(StudentAdd.success != 0){
-                viewStudents();
-            }
-
-        }
-        catch (Exception exp){
-            System.out.println("Houston we have a problem!  " + exp.getLocalizedMessage());
-
-        }
+    public void showteacherInfo(){
 
     }
     public static class Person {
@@ -148,53 +124,50 @@ public class StudentsController {
         public void setId(String fName) {
             id.set(fName);
         }
-        
+
     }
-    public StudentsController()throws SQLException{
-       // viewStudents();
+    public TeacherProfile()throws SQLException{
+        // viewTeachers();
     }
     @FXML
-    public  void viewStudents(String query){
-        try {
-            //setting the PropertyValue
-            firstNameColumn.setCellValueFactory(
-                    new PropertyValueFactory<>("firstName"));
-            surnameColumn.setCellValueFactory(
-                    new PropertyValueFactory<>("lastName"));
-            sexColumn.setCellValueFactory(
-                    new PropertyValueFactory<>("sex"));
-            otherNameColumn.setCellValueFactory(
-                    new PropertyValueFactory<>("otherName"));
-            addressColumn.setCellValueFactory(
-                    new PropertyValueFactory<>("addressProperty"));
-            idColumn.setCellValueFactory(
-                    new PropertyValueFactory<>("id"));
+    private void viewTeachers(String query) throws SQLException{
 
-            //query the data from the database
-            studentTable.setItems(databaseRetrieve(query));
-            //adding the list to the table
-            // studentTable.getItems().add(data);
-            //System.out.println("SELECT * FROM STUDENTS WHERE CLASSID LIKE '" + classID + "');");
-        }
-        catch (Exception exp){
-            System.out.println("viewStudents failed Exp: " + exp.getLocalizedMessage());
-        }
+        //setting the PropertyValue
+
+        firstNameColumn.setCellValueFactory(
+                new PropertyValueFactory<>("firstName"));
+        surnameColumn.setCellValueFactory(
+                new PropertyValueFactory<>("lastName"));
+        sexColumn.setCellValueFactory(
+                new PropertyValueFactory<>("sex"));
+        otherNameColumn.setCellValueFactory(
+                new PropertyValueFactory<>("otherName"));
+        addressColumn.setCellValueFactory(
+                new PropertyValueFactory<>("addressProperty"));
+        idColumn.setCellValueFactory(
+                new PropertyValueFactory<>("id"));
+
+        //query the data from the database
+        teacherTable.setItems(databaseRetrieve(query));
+        //adding the list to the table
+        // teacherTable.getItems().add(data);
+      //  System.out.println("SELECT * FROM Teachers WHERE DEPTID LIKE '" + deptID + "';");
     }
     @FXML
     private void showSchoolInfo(Event e)throws IOException{
         school.showSchoolInfo(e);
     }
     @FXML
-    private void showDeptsInfo(Event e){
-        school.showDepts(e);
-    }
-    @FXML
-    private void showTeachersInfo(Event e){
-        school.showTeachers(e);
-    }
-    @FXML
     private void logout(Event e){
         school.logout(e);
+    }
+    @FXML
+    private void showStudentsInfo(Event e){
+        school.showStudents(e);
+    }
+    @FXML
+    private void showDeptsInfo(Event e){
+        school.showDepts(e);
     }
     private ObservableList databaseRetrieve(String query){
         ObservableList<Person> data = FXCollections.observableArrayList();
@@ -204,10 +177,10 @@ public class StudentsController {
 
             while (results.next()) {
                 //Entering the raw data into the ObservableList
-            data.addAll(new Person(results.getString("STUDENTID"),
-                    results.getString("FIRSTNAME"),results.getString("SURNAME"),
-                    results.getString("OTHERNAME"),results.getString("SEX"),
-                    results.getString("ADDRESS")));
+                data.addAll(new Person(results.getString("teacherID"),
+                        results.getString("FIRSTNAME"),results.getString("SURNAME"),
+                        results.getString("OTHERNAME"),results.getString("SEX"),
+                        results.getString("ADDRESS")));
             }
 
             DatabaseConnect.closeConnection(results);
@@ -219,53 +192,59 @@ public class StudentsController {
     }
 
     @FXML
-    private void showSelectedClass(){
-        String classSelected = classSelection.getSelectionModel().getSelectedItem();
-        String query;
+    private void showSelectedDept(){
+        
         try {
-            switch (classSelected) {
-                case "Form 1": {
-                    classID = 1;
-                    query = "SELECT * FROM STUDENTS WHERE CLASSID LIKE '" + classID + "';";
-                    viewStudents(query);
+            switch (classSelection.getSelectionModel().getSelectedItem()) {
+                case "Mathematics": {
+                    deptID = 1;
+                    viewTeachers("SELECT * FROM TEACHERS WHERE DEPTID LIKE '" + deptID + "';");
                     break;
                 }
-                case "Form 2":
-                    classID = 2;
-                    query = "SELECT * FROM STUDENTS WHERE CLASSID LIKE '" + classID + "';";
-                    viewStudents(query);
+                case "Science":
+                    deptID = 2;
+                    viewTeachers("SELECT * FROM TEACHERS WHERE DEPTID LIKE '" + deptID + "';");
                     break;
-                case "Form 3":
-                    classID = 3;
-                    query = "SELECT * FROM STUDENTS WHERE CLASSID LIKE '" + classID + "';";
-                    viewStudents(query);
+                case "Social Studies":
+                    deptID = 3;
+                    viewTeachers("SELECT * FROM TEACHERS WHERE DEPTID LIKE '" + deptID + "';");
                     break;
-                case "Form 4":
-                    classID = 4;
-                    query = "SELECT * FROM STUDENTS WHERE CLASSID LIKE '" + classID + "';";
-                    viewStudents(query);
+                case "Languages":
+                    deptID = 4;
+                    viewTeachers("SELECT * FROM TEACHERS WHERE DEPTID LIKE '" + deptID + "';");
                     break;
             }
         }
         catch (Exception exp){
             System.out.println("Houston we have a late night situation Exp: " + exp.getLocalizedMessage());
         }
+
     }
     @FXML
-    private void initialize()throws SQLException{
-        String query = "SELECT * FROM STUDENTS;";
-        viewStudents(query);
-    }
-    private void viewStudents(){
-        String query = "SELECT * FROM STUDENTS;";
-        viewStudents(query);
+    private void initialize(){
+        try {
+            viewTeachers("SELECT * FROM TEACHERS;");
+        }
+        catch (Exception exp){
+            System.out.println("initialize failed Exp: " + exp.getLocalizedMessage());
+        }
+
     }
     @FXML
-    public void setDeleteStudent()throws SQLException {
+    private void viewTeachers(){
+        try {
+            viewTeachers("SELECT * FROM TEACHERS;");
+        }
+        catch (Exception exp){
+            System.out.println("initialize failed Exp: " + exp.getLocalizedMessage());
+        }
+    }
+    @FXML
+    public void setDeleteTeacher()throws SQLException {
         int success;
-        Person selectedPerson = studentTable.getSelectionModel().getSelectedItem();
+        Person selectedPerson = teacherTable.getSelectionModel().getSelectedItem();
         String selectedId = selectedPerson.getId();
-        success = DatabaseConnect.deleteRow("DELETE FROM STUDENTS WHERE STUDENTID LIKE '" + selectedId + "';");
+        success = DatabaseConnect.deleteRow("DELETE FROM TEACHERS WHERE TEACHERID LIKE '" + selectedId + "';");
 
         if (success != 0) {
 
@@ -274,4 +253,5 @@ public class StudentsController {
             System.out.println("Problem deleting");
         }
     }
+
 }

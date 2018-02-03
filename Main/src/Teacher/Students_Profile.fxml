@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="1080.0" style="-fx-background-color: #d7e9fb;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Admin.StudentsController">
+<AnchorPane prefHeight="500.0" prefWidth="1080.0" style="-fx-background-color: #d7e9fb;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Teacher.StudentsController">
    <children>
       <Label layoutX="430.0" layoutY="66.0" prefHeight="39.0" prefWidth="506.0" text="School  Information Management  System" textAlignment="CENTER" textFill="#145fa9" wrapText="true">
          <font>
@@ -25,17 +25,7 @@
                   <Font name="System Bold Italic" size="15.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" layoutX="6.0" layoutY="186.0" onAction="#showDeptsInfo" prefHeight="50.0" prefWidth="256.0" text="Departments">
-               <font>
-                  <Font name="System Bold Italic" size="15.0" />
-               </font>
-            </JFXButton>
-            <JFXButton buttonType="RAISED" layoutX="7.0" layoutY="236.0" onAction="#showTeachersInfo" prefHeight="50.0" prefWidth="256.0" text="Teachers">
-               <font>
-                  <Font name="System Bold Italic" size="15.0" />
-               </font>
-            </JFXButton>
-            <JFXButton layoutX="7.0" layoutY="286.0" prefHeight="50.0" prefWidth="256.0" style="-fx-background-color: #d7e9fb;" text="Students">
+            <JFXButton layoutX="7.0" layoutY="186.0" prefHeight="50.0" prefWidth="256.0" style="-fx-background-color: #d7e9fb;" text="Students">
                <font>
                   <Font name="System Bold Italic" size="15.0" />
                </font>

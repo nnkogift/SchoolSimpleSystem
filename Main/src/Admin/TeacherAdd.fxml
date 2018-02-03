@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Admin.TeacherAdd">
+    <children>
+        <JFXButton fx:id="addStudent" buttonType="RAISED" layoutX="468.0" layoutY="344.0" onAction="#setAddTeacher" prefHeight="31.0" prefWidth="97.0" style="-fx-background-color: #145fa9;" text="Add Teacher">
+            <font>
+                <Font name="System Bold Italic" size="12.0" />
+            </font>
+        </JFXButton>
+        <JFXTextField fx:id="firstName" labelFloat="true" layoutX="45.0" layoutY="62.0" prefHeight="25.0" prefWidth="173.0" promptText="First Name" />
+        <JFXTextField fx:id="surname" labelFloat="true" layoutX="244.0" layoutY="62.0" prefHeight="25.0" prefWidth="142.0" promptText="Surname" />
+        <JFXTextField fx:id="otherName" labelFloat="true" layoutX="403.0" layoutY="62.0" prefHeight="25.0" prefWidth="173.0" promptText="Other" />
+        <JFXDatePicker fx:id="datePicker" defaultColor="#145fa9" layoutX="46.0" layoutY="128.0" promptText="Date of Birth" />
+        <JFXTextField fx:id="address" labelFloat="true" layoutX="45.0" layoutY="200.0" promptText="Address" />
+        <JFXComboBox fx:id="classPicker" labelFloat="true" layoutX="45.0" layoutY="262.0" promptText="Dept">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Mathematics" />
+                    <String fx:value="Science" />
+                    <String fx:value="Social Studies" />
+                    <String fx:value="Languages" />
+                </FXCollections>
+            </items>
+        </JFXComboBox>
+        <JFXComboBox fx:id="sexPicker" labelFloat="true" layoutX="244.0" layoutY="131.0" promptText="Sex">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="M" />
+                    <String fx:value="F" />
+                </FXCollections>
+            </items>
+        </JFXComboBox>
+        <JFXTextField fx:id="stdID" labelFloat="true" layoutX="336.0" layoutY="131.0" promptText="TeacherID" />
+      <JFXComboBox fx:id="subject" labelFloat="true" layoutX="244.0" layoutY="200.0" prefHeight="25.0" prefWidth="105.0" promptText="Subject" visibleRowCount="4">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="Mathematics" />
+                <String fx:value="Physics" />
+                <String fx:value="Chemistry" />
+                <String fx:value="Biology" />
+                <String fx:value="Civics" />
+                <String fx:value="History" />
+                <String fx:value="Geography" />
+                <String fx:value="English" />
+                <String fx:value="Swahili" />
+                <String fx:value="Commerce" />
+                <String fx:value="Book keeping" />
+            </FXCollections>
+        </items>
+        </JFXComboBox>
+      <Pane prefHeight="400.0" prefWidth="32.0" style="-fx-background-color: #145fa9;" />
+    </children>
+</AnchorPane>

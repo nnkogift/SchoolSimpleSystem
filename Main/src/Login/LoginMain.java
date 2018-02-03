@@ -29,6 +29,7 @@ public class LoginMain {
     private JFXComboBox<String> loginas;
     ResultSet resultSet = null;
     private int previledgeID;
+    public static String headDUsername;
     @FXML
     private void getLoginAction(Event event)throws IOException {
         String usernameS = null;
@@ -54,8 +55,9 @@ public class LoginMain {
                 //first we check the integrity of the entered values
                 //ask for connection
                 //create a statement
-                System.out.println("Starting the Database attack");
-                System.out.println("Administrator");
+                //System.out.println("Starting the Database attack");
+                //System.out.println("Administrator");
+
                 previledgeID = 1;
                 if (validation(usernameS, passwordS)) {
                     Parent adminParent = FXMLLoader.load(getClass().getResource("/Admin/Admin.fxml"));
@@ -73,7 +75,7 @@ public class LoginMain {
                 System.out.println("Teacher");
                 previledgeID = 4;
                 if (validation(usernameS, passwordS)) {
-                    Parent teacherParent = FXMLLoader.load(getClass().getResource("/teacher/teacher.fxml"));
+                    Parent teacherParent = FXMLLoader.load(getClass().getResource("/Teacher/Admin.fxml"));
                     Scene teacherScene = new Scene(teacherParent);
                     Stage teacherStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     teacherStage.hide();
@@ -87,7 +89,7 @@ public class LoginMain {
                 System.out.println("HeadMaster");
                 previledgeID = 2;
                 if (validation(usernameS, passwordS)) {
-                    Parent headmasterParent = FXMLLoader.load(getClass().getResource("headmaster/headmaster.fxml"));
+                    Parent headmasterParent = FXMLLoader.load(getClass().getResource("/HeadMaster/Admin.fxml"));
                     Scene headmasterScene = new Scene(headmasterParent);
                     Stage headmasterStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     headmasterStage.hide();
@@ -99,14 +101,15 @@ public class LoginMain {
             }
             case "Head of Dept": {
                 System.out.println("Head of dept");
+                headDUsername = usernameS;
                 previledgeID = 3;
                 if (validation(usernameS, passwordS)) {
-                    Parent HeadofDeptParent = FXMLLoader.load(getClass().getResource("HeadofDept/HeadofDept.fxml"));
+                    Parent HeadofDeptParent = FXMLLoader.load(getClass().getResource("/HeadOfDept/HeadDeptMain.fxml"));
                     Scene HeadofDeptScene = new Scene(HeadofDeptParent);
                     Stage HeadofDeptStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     HeadofDeptStage.hide();
                     HeadofDeptStage.setScene(HeadofDeptScene);
-                    HeadofDeptStage.setTitle("HeadofDept");
+                    HeadofDeptStage.setTitle("Department Head");
                     HeadofDeptStage.show();
                 }
                 break;
@@ -144,10 +147,10 @@ public class LoginMain {
                 }
 
                 if (resultSet.next()) {
-                    System.out.println(resultSet.getString("USERNAME"));
-                    System.out.println(resultSet.getString("PASSWORD"));
-                    System.out.println(resultSet.getInt("PREVILEDGEID"));
-                    System.out.println(previledgeID);
+//                    System.out.println(resultSet.getString("USERNAME"));
+//                    System.out.println(resultSet.getString("PASSWORD"));
+//                    System.out.println(resultSet.getInt("PREVILEDGEID"));
+//                    System.out.println(previledgeID);
                     if (!usernameS.equalsIgnoreCase(resultSet.getString("USERNAME")) )
                         System.out.println("Username is incorrect");
                     else if(!passwordS.equalsIgnoreCase(resultSet.getString("PASSWORD")))

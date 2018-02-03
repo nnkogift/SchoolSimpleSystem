@@ -1,6 +1,5 @@
-package Admin;
+package HeadMaster;
 
-import Database.DatabaseConnect;
 import Login.LoginMain;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
@@ -15,10 +14,6 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 public class Admin {
     //the admin has the ability to
@@ -54,7 +49,7 @@ public class Admin {
 
 
     @FXML
-    public  void logout(Event e){
+    public void logout(Event e){
 //        logoutBtn.setOnAction(e -> {
             try {
                 Parent teacherParent = FXMLLoader.load(getClass().getResource("/Login/LoginF.fxml"));

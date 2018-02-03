@@ -15,12 +15,12 @@
       </Label>
       <Pane prefHeight="700.0" prefWidth="256.0" style="-fx-background-color: #145fa9;">
          <children>
-            <JFXButton buttonType="RAISED" layoutX="14.0" layoutY="136.0" onAction="#showSchoolInfo" prefHeight="50.0" prefWidth="243.0" text="School Information" textAlignment="RIGHT">
+            <JFXButton layoutX="14.0" layoutY="136.0" onAction="#showSchoolInfo" prefHeight="50.0" prefWidth="243.0" style="-fx-background-color: #d7e9fb;" text="School Information" textAlignment="RIGHT">
                <font>
                   <Font name="System Bold Italic" size="15.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" layoutX="14.0" layoutY="186.0" prefHeight="50.0" prefWidth="243.0" text="Departments">
+            <JFXButton buttonType="RAISED" layoutX="14.0" layoutY="186.0" onAction="#showDepts" prefHeight="50.0" prefWidth="243.0" text="Departments">
                <font>
                   <Font name="System Bold Italic" size="15.0" />
                </font>
